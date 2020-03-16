@@ -4,7 +4,7 @@
 #include<RF24.h>
 
 // CE, CSN pins
-RF24 radio(9, 10);
+RF24 radio(7, 8);
 
 void setup(void){
     while(!Serial);
@@ -33,7 +33,7 @@ void loop(void){
         radio.stopListening();
 
         String stringMessage(receivedMessage);
-
+        
         if(stringMessage == "GETSTRING"){
             Serial.println("Looks like they want a string!");
             const char text[] = "Yo wassup, haha";
@@ -41,6 +41,6 @@ void loop(void){
             Serial.println("We sent our message.");
         }
     }
-    delay(100);
+    delay(1000);
 
 }

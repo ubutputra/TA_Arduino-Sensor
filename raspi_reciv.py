@@ -25,8 +25,8 @@ radio.printDetails()
 # radio.startListening()
 
 message = list("GETSTRING")
-while len(message) &lt; 32:
-    message.append(0)
+# while len(message) &lt; 32:
+#     message.append(0)
 
 while(1):
     start = time.time()
