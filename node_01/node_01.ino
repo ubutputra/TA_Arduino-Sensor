@@ -39,19 +39,23 @@ void loop() {
   //keterangan variable send_data -> nomor_node|ppmCOMq7|CelciusDHT11|HumidityDHT11|ppmMQ135
   char send_data[15] = "1|";
   char SaveValueMq7[10];
+  char SaveValueMq135[10];
+
   char SaveValueTempDHT11[10];
   char SaveValueHumidityDHT11[10];
   int SensorValueMq7 = getSensorMq7();
   int SensorValueTempDHT11 = getTempSensorDHT11();
   int SensorValueHumidityDHT11 = getHumiditySensorDHT11();
+  int SensorValueMq135 = getSensorMq135();
 
-  
+  Serial.println(SensorValueMq135);
   Serial.println(SensorValueMq7);
   Serial.println(SensorValueTempDHT11);
 
  
   //convert int to char
   itoa(SensorValueMq7,SaveValueMq7,10);
+  itoa(SensorValueMq135,SaveValueMq135,10);
   itoa(SensorValueTempDHT11,SaveValueTempDHT11,10);
   itoa(SensorValueHumidityDHT11,SaveValueHumidityDHT11,10);
 
@@ -64,6 +68,9 @@ void loop() {
   strcat(send_data,SaveValueTempDHT11);
   strcat(send_data,"|");
   strcat(send_data,SaveValueHumidityDHT11);
+  strcat(send_data,"|");
+  strcat(send_data,SaveValueMq135);
+
 
 
   Serial.println(send_data);
@@ -122,3 +129,15 @@ int getHumiditySensorDHT11(){
   
   return t_humidity;
  }
+
+int getSensorMq135(){
+  int sensorValue;
+  
+  sensorValue = analogRead(1);       // read analog input pin 0
+  Serial.print("Data Sensor Mq135=");
+  Serial.print(sensorValue, DEC);               // prints the value read
+  Serial.println(" PPM");
+
+  return(sensorValue);
+
+  }
