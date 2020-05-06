@@ -9,7 +9,7 @@
 #define DHTPIN A2     //Pin apa yang digunakan
 #define DHTTYPE DHT11   // DHT 11
 DHT dht(DHTPIN, DHTTYPE);
-const uint64_t pipe = 0xF0F0F0F0A2LL;
+const uint64_t pipe = 0xF0F0F0F0A3LL;
 
 //global variable untuk sensor Mq-7
 #define pinSensor A0
@@ -37,7 +37,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   //keterangan variable send_data -> nomor_node|ppmCOMq7|CelciusDHT11|HumidityDHT11|ppmMQ135
-  char send_data[15] = "2|";
+  char send_data[15] = "3|";
   char SaveValueMq7[10];
   char SaveValueMq135[10];
 
@@ -61,7 +61,7 @@ void loop() {
 
 
   Serial.println(SaveValueMq7);
-  Serial.print("Start Send data from node 2 : \n");
+  Serial.print("Start Send data from node 3 : \n");
   //concat char sensor mq7
   strcat(send_data,SaveValueMq7);
   strcat(send_data,"|");

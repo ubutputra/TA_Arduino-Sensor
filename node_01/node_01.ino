@@ -10,6 +10,7 @@
 #define DHTTYPE DHT11   // DHT 11
 DHT dht(DHTPIN, DHTTYPE);
 
+const uint64_t pipe = 0xF0F0F0F0A1LL;
 
 //global variable untuk sensor Mq-7
 #define pinSensor A0
@@ -28,7 +29,7 @@ void setup() {
   
   radio.setPALevel(RF24_PA_MIN);
   radio.setChannel(0x76);
-  radio.openWritingPipe(0xF0F0F0F0A1LL);
+  radio.openWritingPipe(pipe);
   radio.enableDynamicPayloads();
   radio.powerUp();
 
@@ -77,7 +78,7 @@ void loop() {
   radio.write(&send_data, sizeof(send_data));
  
 
-  delay(1000);
+  delay(5000);
 }
 
 int getSensorMq7(){
