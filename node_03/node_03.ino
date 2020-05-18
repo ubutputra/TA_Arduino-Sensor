@@ -4,6 +4,10 @@
 #include <RF24.h>
 #include <RF24_config.h>
 #include <stdio.h>
+
+//sensor mq135
+#define pin_sensor_mq135 A1
+
 //Sensor DHT11
 #include "DHT.h" //library sensor yang telah diimportkan 
 #define DHTPIN A2     //Pin apa yang digunakan

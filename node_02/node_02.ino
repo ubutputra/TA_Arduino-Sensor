@@ -4,6 +4,10 @@
 #include <RF24.h>
 #include <RF24_config.h>
 #include <stdio.h>
+
+//sensor mq135
+#define pin_sensor_mq135 A1
+
 //Sensor DHT11
 #include "DHT.h" //library sensor yang telah diimportkan 
 #define DHTPIN A2     //Pin apa yang digunakan
@@ -133,9 +137,9 @@ int getHumiditySensorDHT11(){
 int getSensorMq135(){
   int sensorValue;
   
-  sensorValue = analogRead(1);       // read analog input pin 0
+  sensorValue = analogRead(pin_sensor_mq135);       // read analog input pin 0
   Serial.print("Data Sensor Mq135=");
-  Serial.print(sensorValue, DEC);               // prints the value read
+  Serial.print(sensorValue);               // prints the value read
   Serial.println(" PPM");
 
   return(sensorValue);
